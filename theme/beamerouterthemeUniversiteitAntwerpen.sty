@@ -62,7 +62,7 @@
 
 \ifthenelse{ \boolean{beamer@dark} \OR \boolean{beamer@darktitle} }
 % then
-{\pgfdeclareimage[width=\paperwidth]{uaBackgroundDark}{uaBackgroundDarkBlue}}
+{\pgfdeclareimage[width=\paperwidth]{uaBackgroundDark}{uaBackgroundDarkBlue.pdf}}
 %else
 {}
 
@@ -73,7 +73,8 @@
   \setlength{\wavewidth}{11.6352cm}% 9.09in* 64/127 *2.54cm/in
   \newlength{\waveheight}
   \setlength{\waveheight}{0.7936cm}% 0.62in* 64/127 *2.54cm/in
-  \pgfdeclareimage[width=\wavewidth,height=\waveheight]{uWave}{uabottomwave}
+  %\pgfdeclareimage[width=\wavewidth,height=\waveheight]{uWave}{uabottomwave}
+\pgfdeclareimage[width=\paperwidth]{uWave}{uabottomwave.pdf}
 \fi
 % ----------------------------------------------------------------------------
 % *** END DEFINE IMAGES <<<
@@ -114,7 +115,9 @@
       \vskip5cm% TODO: get rid of this quirk
     }
     {%
-      \pgfuseimage{ULogo}%
+ %     \pgfuseimage{ULogo}%
+\vskip1cm%
+
     }
   }
 }
@@ -182,6 +185,7 @@
 \newlength{\textlogobottommarginDark}
 % actual bottom margin in the PowerPoint(R) theme: 7.5'' - 6.83'' - 0.36'' + 0.36'' * 2px/52px
 \setlength{\textlogobottommarginDark}{0.41452307692307688cm}% (7.5'' - 6.83'' - 0.36'' + 0.36'' * 2px/52px)* 64/127 *2.54cm/in
+\setbeamerfont{footline}{size=\fontsize{8}{10}\selectfont}
 \newcommand\uTextColorPosDark {\pgfpoint{\margin}{\textlogobottommarginDark}}
 
 \newlength{\textlogobottommarginLight}
@@ -203,14 +207,14 @@
   \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
   % *** THEN *** dark footline
   {%
-    \pgftext[left,bottom,at=\uTextColorPosDark]{\pgfuseimage{uTextColor}}%
-    \pgftext[right,bottom,at=\posUlogoFoot]{\pgfuseimage{ULogo}}%
+   % \pgftext[left,bottom,at=\uTextColorPosDark]{\pgfuseimage{uTextColor}}%
+   % \pgftext[right,bottom,at=\posUlogoFoot]{\pgfuseimage{ULogo}}%
   }
   % *** ELSE *** light footline
   {%
      % conditionally put the ua text logo on the page
-    \ifthenelse{\c@framenumber=1 \OR \NOT \boolean{beamer@compress}}
-    {\pgftext[left,bottom,at=\uTextColorPosLight]{\pgfuseimage{uTextColor}}}%
+    %\ifthenelse{\c@framenumber=1 \OR \NOT \boolean{beamer@compress}}
+   % {\pgftext[left,bottom,at=\uTextColorPosLight]{\pgfuseimage{uTextColor}}}%
     {}%
 
     % bottom wave
@@ -219,12 +223,13 @@
     % page number
     \ifbeamer@framenumber%
       \ifnum\c@framenumber=1\else
-        \pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
+        %\pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
+\pgftext[right,bottom,at=\pgfpoint{0.05\paperwidth}{0.005\paperwidth}]{%
           \usebeamerfont{frame number in foot}%
           \usebeamercolor[fg]{frame number in foot}\insertframenumber{}%
-          \ifbeamer@totalframenumber%
-            /\inserttotalframenumber%
-          \fi
+%          \ifbeamer@totalframenumber%
+%            /\inserttotalframenumber%
+%          \fi
         }%
       \fi
     \fi%
