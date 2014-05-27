@@ -224,12 +224,12 @@
     \ifbeamer@framenumber%
       \ifnum\c@framenumber=1\else
         %\pgftext[right,bottom,at=\pgfpoint{0.98\paperwidth}{0.02\paperwidth}]{%
-\pgftext[right,bottom,at=\pgfpoint{0.05\paperwidth}{0.005\paperwidth}]{%
+        \pgftext[right,bottom,at=\pgfpoint{0.05\paperwidth}{0.005\paperwidth}]{%
           \usebeamerfont{frame number in foot}%
           \usebeamercolor[fg]{frame number in foot}\insertframenumber{}%
-%          \ifbeamer@totalframenumber%
-%            /\inserttotalframenumber%
-%          \fi
+          \ifbeamer@totalframenumber%
+            /\inserttotalframenumber%
+          \fi
         }%
       \fi
     \fi%
