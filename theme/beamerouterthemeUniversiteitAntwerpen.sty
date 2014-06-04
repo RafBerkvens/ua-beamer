@@ -41,6 +41,9 @@
   % value approximately \ulogowidth*0.25
   \setlength{\ulogopadding}{0.2784cm}
 \fi
+
+\newlength{\cosyslogoheight}
+\setlength{\cosyslogoheight}{1.0cm}%
 % ----------------------------------------------------------------------------
 % *** END DEFINE LENGTHS >>>
 % ----------------------------------------------------------------------------
@@ -50,6 +53,7 @@
 % *** DEFINE IMAGES <<<
 % ----------------------------------------------------------------------------
 \pgfdeclareimage[width=\ulogowidth]{ULogo}{logo_UA_U_kl3}
+\pgfdeclareimage[height=\cosyslogoheight]{CoSysLogo}{images/cosys_logo}
 
 % The text logo is a bit of a special case:
 % As given in the PowerPoint(R) slides, the logo is 3.12''x0.36'', the picture file
@@ -115,8 +119,8 @@
       \vskip5cm% TODO: get rid of this quirk
     }
     {%
- %     \pgfuseimage{ULogo}%
-\vskip1cm%
+      \pgfuseimage{CoSysLogo}\hfill%
+%\vskip1cm%
 
     }
   }
