@@ -64,22 +64,9 @@
 \setlength{\textlogoheight}{0.37218461538461539cm}% 0.36in* 64/127 *2.54cm/in * 42px/52px
 \pgfdeclareimage[height=\textlogoheight]{uTextColor}{logo_UA_tekst_kl}
 
-\ifthenelse{ \boolean{beamer@dark} \OR \boolean{beamer@darktitle} }
-% then
-{\pgfdeclareimage[width=\paperwidth]{uaBackgroundDark}{uaBackgroundDarkBlue.pdf}}
-%else
-{}
+\pgfdeclareimage[width=\paperwidth]{title_background}{cosys_background.pdf}
 
-\ifbeamer@dark%
-  \pgfdeclareimage[width=\paperwidth]{uaBackgroundLight}{uaBackgroundLightBlue}
-\else%
-  \newlength{\wavewidth}
-  \setlength{\wavewidth}{11.6352cm}% 9.09in* 64/127 *2.54cm/in
-  \newlength{\waveheight}
-  \setlength{\waveheight}{0.7936cm}% 0.62in* 64/127 *2.54cm/in
-  %\pgfdeclareimage[width=\wavewidth,height=\waveheight]{uWave}{uabottomwave}
-\pgfdeclareimage[width=\paperwidth]{uWave}{uabottomwave.pdf}
-\fi
+\pgfdeclareimage[width=\paperwidth]{ua_wave}{uabottomwave}
 % ----------------------------------------------------------------------------
 % *** END DEFINE IMAGES <<<
 % ----------------------------------------------------------------------------
@@ -89,7 +76,7 @@
 % ----------------------------------------------------------------------------
 % *** HEADLINE <<<
 % ----------------------------------------------------------------------------
-\ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }{%
+\ifthenelse{ \c@framenumber=1 }{%IF
   \defbeamertemplate*{headline}{ua theme}%
   {
     % page number
@@ -106,7 +93,7 @@
       \fi
     \fi%
   }%
-}{
+}{%THEN
   \newlength{\logotopmargin}%
   \setlength{\logotopmargin}{0.704cm}%  0.55in* 64/127 *2.54cm/in
   \defbeamertemplate*{headline}{ua theme}%
@@ -219,7 +206,7 @@
     {}%
 
     % bottom wave
-    \pgftext[right,bottom,at=\uWavePos]{\pgfuseimage{uWave}}%
+    \pgftext[right,bottom,at=\uWavePos]{\pgfuseimage{ua_wave}}%
 
     % page number
     \ifbeamer@framenumber%
@@ -264,9 +251,9 @@
   % *** THEN ***
   {%
     \ifnum\c@framenumber=1%
-      \pgfuseimage{uaBackgroundDark}
+      \pgfuseimage{title_background}
     \else%
-      \pgfuseimage{uaBackgroundLight}%
+      \pgfuseimage{title_background}%
     \fi%
   }
   % *** ELSE ***
