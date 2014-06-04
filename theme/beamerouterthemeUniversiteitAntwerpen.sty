@@ -114,14 +114,11 @@
     % TODO Don't \vskip if the title is too long!
     \vskip\logotopmargin%
     \hskip\margin%
-    \ifthenelse{ \boolean{beamer@dark} \OR \(\boolean{beamer@darktitle}\AND\c@framenumber=1\) }
-    {%
-      \vskip5cm% TODO: get rid of this quirk
-    }
-    {%
+    \ifthenelse{ \c@framenumber=1 }
+    {%IF
+      \vskip1cm% TODO: get rid of this quirk
+    }{%THEN
       \pgfuseimage{CoSysLogo}\hfill%
-%\vskip1cm%
-
     }
   }
 }
